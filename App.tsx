@@ -1,6 +1,16 @@
+/*
+* File: App.js
+* Author: Mihelik Tamás
+* Copyright: 2025, Mihelik Tamás
+* Group: Szoft II/1/N
+* Date: 2025-02-07
+* Github: https://github.com/ProgrammablePotato
+* Licenc: GNU GPL
+*/
+
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Button, ImageBackground, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
   const [radius, onChangeRadius] = React.useState('');
