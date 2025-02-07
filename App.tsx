@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, ImageBackground, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
   const [radius, onChangeRadius] = React.useState('');
@@ -10,9 +10,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Henger felszín kalkulátor</Text>
-
       <View>
-        <Text>A henger sugara: </Text>
+        <Text style={styles.inputlable}>A henger sugara: </Text>
         <TextInput
           style={styles.input}
           onChangeText={onChangeRadius}
@@ -22,8 +21,8 @@ export default function App() {
         />
       </View>
 
-      <View>
-        <Text>A henger magassága: </Text>
+      <View >
+        <Text style={styles.inputlable}>A henger magassága: </Text>
         <TextInput
           style={styles.input}
           onChangeText={onChangeHeight}
@@ -40,7 +39,9 @@ export default function App() {
             let h:number = parseFloat(height)
             let s:number = 0
             if (r > 0 && h > 0) {
-              let s:number = 2*Math.PI*r*(r+h)
+              s = 2*Math.PI*r*(r+h)
+              //Nem tudtam hogy  melyik metódus tud valahány 
+              //tizedesre kerekíteni, ezért így oldottam meg:
               onChangeSurface((Math.round(s*100)/100).toString())
             }
             else {
@@ -51,7 +52,6 @@ export default function App() {
       <View>
         <Text style={styles.solution}>A henger felülete {surface}</Text>
       </View>
-      
       <StatusBar style="auto" />
     </View>
   );
@@ -65,8 +65,12 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'lightblue',
     alignItems: 'center',
+  },
+  inputlable: {
+    fontSize: 20,
+    fontStyle: "italic"
   },
   input: {
     height: 40,
